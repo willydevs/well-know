@@ -57,7 +57,7 @@ class BemSeiSecurityScanner {
         foreach ($this->directories_to_scan as $directory) {
             $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
             foreach ($files as $file) {
-                if ($file->isFile() && pathinfo($file, PATHINFO_EXTENSION) === 'php') {
+                if ($file->isFile() && $file->getExtension() === 'php') {
                     $this->scan_file($file->getPathname());
                 }
             }
